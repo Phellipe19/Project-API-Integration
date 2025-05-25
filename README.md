@@ -15,7 +15,7 @@ Tela de Boas-Vindas:
 Armazenamento Seguro:
  - O token JWT e os dados do usuário são armazenados de forma simples no localStorage, com redirecionamento automático caso o usuário não esteja autenticado.
 
-Tecnologias Utilizadas
+#Tecnologias Utilizadas
  - HTML5
  - CSS3
  - JavaScript (ES6+)
