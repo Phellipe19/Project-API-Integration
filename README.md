@@ -46,8 +46,8 @@ Este projeto é uma aplicação web simples e funcional que implementa um sistem
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/seu-usuario/Project-API-Integration.git
+cd Project-API-Integration
 ```
 
 2. Abra o projeto com o **Live Server** no seu editor de código (ex: Visual Studio Code).
