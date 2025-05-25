@@ -1,8 +1,22 @@
-<form id="cadastroForm">
-    <input type="email" id="email" placeholder="E-mail" required>
-    <input type="password" id="senha" placeholder="Senha" required>
-    <input type="password" id="confirmarSenha" placeholder="Confirme a senha" required>
-    <button type="submit">Cadastrar</button>
-    <p id="mensagemErro" class="erro"></p>
-  </form>
-  <script src="cadastro.js"></script>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Cadastro</h2>
+    <form id="cadastroForm">
+      <input type="email" id="email" placeholder="E-mail" required>
+      <input type="password" id="senha" placeholder="Senha" required>
+      <input type="password" id="senhaConfirmada" placeholder="Confirmação de Senha" required>
+      <button type="submit">Cadastrar</button>
+      <p id="mensagemErro" class="erro"></p>
+      <p class="cadastro-link">Já tem uma conta? <a href="index.html">Fazer login</a></p>
+    </form>
+  </div>
+  <script type="module" src="cadastro.js"></script>
+</body>
+</html>
