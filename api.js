@@ -6,7 +6,18 @@ export async function autenticar(email, senha) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, senha })
   });
-  return response.json().then(data => ({ status: response.status, data }));
+
+  const contentType = response.headers.get('content-type');
+  let data;
+
+  if (contentType && contentType.includes('application/json')) {
+    data = await response.json();
+  } else {
+    const text = await response.text();
+    data = { mensagem: text };
+  }
+
+  return { status: response.status, data };
 }
 
 export async function registrar(email, senha, senhaConfirmada) {
@@ -15,5 +26,19 @@ export async function registrar(email, senha, senhaConfirmada) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, senha, senhaConfirmada }) 
   });
-  return response.json().then(data => ({ status: response.status, data }));
+
+  const contentType = response.headers.get('content-type');
+  let data;
+
+  if (contentType && contentType.includes('application/json')) {
+    data = await response.json();
+  } else {
+    const text = await response.text();
+    data = { mensagem: text };
+  }
+
+  return { status: response.status, data };
 }
+
+
+
