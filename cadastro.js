@@ -1,35 +1,30 @@
-document.getElementById('cadastroForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-  
-    const email = document.getElementById('email').value;
-    const senha = document.getElementById('senha').value;
-    const confirmarSenha = document.getElementById('confirmarSenha').value;
-    const mensagemErro = document.getElementById('mensagemErro');
-    mensagemErro.textContent = '';
-  
-    if (senha !== confirmarSenha) {
-      mensagemErro.textContent = 'As senhas não coincidem.';
-      return;
-    }
-  
-    const senhaForte = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).+$/;
+import { registrar } from './api.js';
 
-    if (!senhaForte.test(senha)) {
-      mensagemErro.textContent = 'A senha deve conter ao menos uma letra maiúscula, uma minúscula e um caractere especial.';
-      return;
-    }
+document.getElementById('cadastroForm').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-    try {
-      const { status, data } = await registrar(email, senha, confirmarSenha);
-  
-      if (status === 200) {
-        alert('Cadastro realizado com sucesso!');
-        window.location.href = 'login.html';
-      } else {
-        mensagemErro.textContent = data?.mensagem || 'Erro ao cadastrar';
-      }
-    } catch (err) {
-      mensagemErro.textContent = 'Erro de conexão com o servidor.';
+  const email = document.getElementById('email').value;
+  const senha = document.getElementById('senha').value;
+  const senhaConfirmada = document.getElementById('senhaConfirmada').value;
+  const mensagemErro = document.getElementById('mensagemErro');
+  mensagemErro.textContent = '';
+
+  if (senha !== senhaConfirmada) {
+    mensagemErro.textContent = 'As senhas não coincidem.';
+    return;
+  }
+
+  try {
+    const { status, data } = await registrar(email, senha, senhaConfirmada);
+
+    if (status === 200 || status === 201) {
+      alert('Cadastro realizado com sucesso! Redirecionando para login.');
+      window.location.href = 'index.html';
+    } else {
+      mensagemErro.textContent = data?.mensagem || 'Erro ao cadastrar.';
     }
-  });
-  
+  } catch (error) {
+    mensagemErro.textContent = 'Erro na requisição. Tente novamente mais tarde.';
+    console.error('Erro ao registrar:', error);
+  }
+});
