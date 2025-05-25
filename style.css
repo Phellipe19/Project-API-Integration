@@ -84,3 +84,19 @@ button.logout:hover {
   background-color: #b02a37;
   box-shadow: 0 6px 20px #b02a3788;
 }
+
+.cadastro-link {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.cadastro-link a {
+  color: #d93025;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cadastro-link a:hover {
+  text-decoration: underline;
+}
