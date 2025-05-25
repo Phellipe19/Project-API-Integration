@@ -21,7 +21,7 @@ export async function autenticar(email, senha) {
 }
 
 export async function registrar(email, senha, senhaConfirmada) {
-  const response = await fetch(`${BASE_URL}/Autenticacao/registrar`, {
+  const response = await fetch(`${BASE_URL}/Autenticacao/registar`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, senha, senhaConfirmada }) 
